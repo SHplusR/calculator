@@ -29,11 +29,26 @@ class ViewController: UIViewController {
         userIsInTheMiddleOfTyping = true
     }
     
+    var displayValue : Double
+    {
+        get{
+            //displayvalue 가져오기
+            return Double(display.text!)!
+        }
+        set{
+            display.text = String(newValue)
+        }
+    }
+    
     @IBAction func perform(_ sender: UIButton) {
         userIsInTheMiddleOfTyping = false
         if let methematicalSymbol = sender.currentTitle{
             if methematicalSymbol == "π" {
-                display.text = String(M_PI)
+                displayValue = M_PI
+            }
+            else if methematicalSymbol == "√"
+            {
+                displayValue = sqrt(displayValue)
             }
         }
         
