@@ -9,12 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var display: UILabel!
+    @IBOutlet private weak var display: UILabel!
     
-    var userIsInTheMiddleOfTyping = false
+    private var userIsInTheMiddleOfTyping = false
     
     
-    @IBAction func touchDigit(_ sender: UIButton){
+    @IBAction private func touchDigit(_ sender: UIButton){
         let digit = sender.currentTitle! //클릭한 버튼의 숫자 알기
         print("wow \(digit) touched ")
         if userIsInTheMiddleOfTyping
@@ -29,28 +29,32 @@ class ViewController: UIViewController {
         userIsInTheMiddleOfTyping = true
     }
     
-    var displayValue : Double
+    private var displayValue : Double
     {
         get{
             //displayvalue 가져오기
             return Double(display.text!)!
         }
         set{
+            print(newValue)
             display.text = String(newValue)
         }
     }
     
-    @IBAction func perform(_ sender: UIButton) {
-        userIsInTheMiddleOfTyping = false
-        if let methematicalSymbol = sender.currentTitle{
-            if methematicalSymbol == "π" {
-                displayValue = M_PI
-            }
-            else if methematicalSymbol == "√"
-            {
-                displayValue = sqrt(displayValue)
-            }
+    private var brian = calculatorBrain()
+    
+    @IBAction private func perform(_ sender: UIButton) {
+        //만약 입력중이라면
+        if userIsInTheMiddleOfTyping
+        {
+            brian.setOperand(operand: displayValue)
+            userIsInTheMiddleOfTyping = false
+            
         }
+        if let methematicalSymbol = sender.currentTitle{
+            brian.performOperand(symbol: methematicalSymbol)
+            }
+        displayValue = brian.result
         
     }
     

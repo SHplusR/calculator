@@ -16,6 +16,7 @@
 		7219D43028B725E900641EF5 /* calculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7219D42F28B725E900641EF5 /* calculatorTests.swift */; };
 		7219D43A28B725E900641EF5 /* calculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7219D43928B725E900641EF5 /* calculatorUITests.swift */; };
 		7219D43C28B725E900641EF5 /* calculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7219D43B28B725E900641EF5 /* calculatorUITestsLaunchTests.swift */; };
+		7219D44928BA647D00641EF5 /* calculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7219D44828BA647D00641EF5 /* calculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7219D43528B725E900641EF5 /* calculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7219D43928B725E900641EF5 /* calculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatorUITests.swift; sourceTree = "<group>"; };
 		7219D43B28B725E900641EF5 /* calculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7219D44828BA647D00641EF5 /* calculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		7219D40C28B725E800641EF5 = {
 			isa = PBXGroup;
 			children = (
+				7219D44828BA647D00641EF5 /* calculatorBrain.swift */,
 				7219D41728B725E800641EF5 /* calculator */,
 				7219D42E28B725E900641EF5 /* calculatorTests */,
 				7219D43828B725E900641EF5 /* calculatorUITests */,
@@ -260,6 +263,7 @@
 			files = (
 				7219D41D28B725E800641EF5 /* ViewController.swift in Sources */,
 				7219D41928B725E800641EF5 /* AppDelegate.swift in Sources */,
+				7219D44928BA647D00641EF5 /* calculatorBrain.swift in Sources */,
 				7219D41B28B725E800641EF5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
