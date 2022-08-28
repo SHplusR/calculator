@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class calculatorBrain
 {
     private var accumulator = 0.0
@@ -15,15 +16,38 @@ class calculatorBrain
     {
         accumulator = operand
     }
+    
+    var operations : Dictionary<String,Operation> =
+    [
+        "π" : Operation.Constant(M_PI), //Double.pi,
+        "e" : Operation.Constant(M_E), //M_E
+        "√" : Operation.UnaryOperation(sqrt),
+        "cos" : Operation.UnaryOperation(cos)
+    ]
+    enum Operation
+    {
+        case Constant(Double)
+        case UnaryOperation((Double) ->Double)
+        case BinaryOperation
+        case Equals
+    }
     func performOperand (symbol:String)
     {
-        switch symbol
+         if let constant = operations[symbol]
         {
-        case "π" : 	accumulator = M_PI
-        case "√" : accumulator = sqrt(accumulator)
-        default : break
-        }
-    }
+             if let operation = operations[symbol]
+             {
+                 switch operation
+                 {
+                     //default는 필요없다
+                 case .Constant(let value) : accumulator = value
+                 case .UnaryOperation(let function) : accumulator = function(accumulator)
+                 case .BinaryOperation : break
+                 case .Equals : break
+                 }
+             }
+         }
+       }
     var result:Double
     {
         get{
