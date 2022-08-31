@@ -8,12 +8,6 @@
 
 import Foundation
 
-func multipy(op1 : Double, op2 : Double) -> Double
-{
-    return op1 * op2
-}
-
-
 class calculatorBrain
 {
     private var accumulator = 0.0
@@ -22,19 +16,19 @@ class calculatorBrain
         accumulator = operand
     }
     
-    var operations : Dictionary<String,Operation> =
+   private var operations : Dictionary<String,Operation> =
     [
         "π" : Operation.Constant(M_PI), //Double.pi,
         "e" : Operation.Constant(M_E), //M_E
         "√" : Operation.UnaryOperation(sqrt),
         "cos" : Operation.UnaryOperation(cos),
-        "Ⅹ" : Operation.BinaryOperation(multipy),
-       // "+" : Operation.BinaryOperation(add),
-       // "-" : Operation.BinaryOperation(minus),
-       // "÷" : Operation.BinaryOperation(divide),
+        "Ⅹ" : Operation.BinaryOperation({$0 * $1}),
+        "+" : Operation.BinaryOperation({$0 + $1 }),
+        "-" : Operation.BinaryOperation({$0 - $1 }),
+        "÷" : Operation.BinaryOperation({$0 / $1 }),
         "=" : Operation.Equals
     ]
-    enum Operation
+   private enum Operation
     {
         case Constant(Double)
         case UnaryOperation((Double) ->Double)
@@ -71,7 +65,7 @@ class calculatorBrain
     }
         private var pending : PendingBinaryOperationInfo?
         
-        struct PendingBinaryOperationInfo
+        private struct PendingBinaryOperationInfo
         {
             var binaryFunction : (Double, Double)->Double
             var firstOperand : Double
