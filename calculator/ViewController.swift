@@ -43,6 +43,19 @@ class ViewController: UIViewController {
     
     private var brian = calculatorBrain()
     
+    
+    var savedProgram : calculatorBrain.PropertyList
+    
+    @IBAction func store() {
+        savedProgram = brian.program
+    }
+    @IBAction func restore() {
+        if savedProgram != nil{
+            brian.program = savedProgram
+            displayValue = brian.result
+        }
+    }
+    
     @IBAction private func perform(_ sender: UIButton) {
         //만약 입력중이라면
         if userIsInTheMiddleOfTyping
